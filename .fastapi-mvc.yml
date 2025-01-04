@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: 0.6.1
+_src_path: https://github.com/fastapi-mvc/copier-project.git
+aiohttp: true
+author: consul2022
+chart_name: reinn
+container_image_name: reinn
+copyright_date: '2025'
+email: lysenko-vyacheslav2008@yandex.ru
+github_actions: true
+helm: true
+license: MIT
+nix: true
+project_description: This project was generated with fastapi-mvc.
+project_name: reinn
+redis: true
+repo_url: https://github.com/consul2022/REINN
+script_name: reinn
+version: 0.1.0
