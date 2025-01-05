@@ -41,7 +41,7 @@ black = "~23.3.0"
 Sphinx = "~5.3.0"
 Pallets-Sphinx-Themes = "~2.0.2"
 myst-parser = "~1.0.0"
-fastapi-mvc = "^0.26.0"
+fastapi-mvc = "^0.28.1"
 
 [tool.poetry.scripts]
 reinn = 'reinn.cli:cli'
