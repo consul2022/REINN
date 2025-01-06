@@ -1,0 +1,8 @@
+fastapi
+sqlalchemy
+uvicorn
+gunicorn
+pydantic-settings
+aiohttp
+redis
+asyncpg

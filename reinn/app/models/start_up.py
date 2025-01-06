@@ -2,8 +2,7 @@ import enum
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Date, Enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-
-Base = declarative_base()
+from ..database import Base
 
 
 class PositionName(enum.Enum):

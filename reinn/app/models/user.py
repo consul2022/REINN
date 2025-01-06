@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-
-Base = declarative_base()  # создали родительский класс для модели
+from ..database import Base
+  # создали родительский класс для модели
 
 
 class User(Base):
@@ -20,3 +20,6 @@ class User(Base):
 
     """связь модели с user"""
     resumes = relationship("Resume", back_populates="user")
+    post_users = relationship("PostUser", back_populates="user")
+    post_comments = relationship("PostComment", back_populates="user")
+

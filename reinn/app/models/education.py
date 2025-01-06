@@ -1,10 +1,10 @@
 import enum
-
+from ..database import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Date, Enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+
 
 class EducationLevel(enum.Enum):
     POSTGRADUATE_STUDIES = "Аспирантура"

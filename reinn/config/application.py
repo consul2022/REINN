@@ -1,5 +1,5 @@
 """Application configuration - FastAPI."""
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 from reinn.version import __version__
 
 
@@ -32,8 +32,11 @@ class Application(BaseSettings):
     VERSION: str = __version__
     DOCS_URL: str = "/"
     USE_REDIS: bool = False
-    # All your additional application configuration should go either here or in
-    # separate file in this submodule.
+
+    DB_USER: str = "user"
+    DB_PASSWORD: str = "password"
+    DB_NAME: str = "reinn"
+    DB_HOST: str = "db"
 
     class Config:
         """Config sub-class needed to customize BaseSettings settings.
