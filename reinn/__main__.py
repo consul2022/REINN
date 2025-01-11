@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from reinn.app.database import Base
 from reinn.app.database import engine
 
+from reinn.app.router import root_api_router
+
 
 # Асинхронная функция для создания таблиц
 async def create_tables():
@@ -29,16 +31,13 @@ app = FastAPI(
     },
     openapi_tags=[
         {
-            "name": "products",
+            "name": "work-experience",
             "description": "Operations with products"
         },
-        {
-            "name": "orders",
-            "description": "Operations with orders"
-        }
     ]
 )
 
+app.include_router(root_api_router)
 
 # Включение инициализации базы данных при запуске приложения
 @app.on_event("startup")

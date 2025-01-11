@@ -1,14 +1,7 @@
-"""Application configuration - root APIRouter.
-
-Defines all FastAPI application endpoints.
-
-Resources:
-    1. https://fastapi.tiangolo.com/tutorial/bigger-applications
-
-"""
 from fastapi import APIRouter
-from reinn.app.controllers import ready
+
+from reinn.app.controllers import work_experience
 
 root_api_router = APIRouter(prefix="/api")
 
-root_api_router.include_router(ready.router, tags=["ready"])
+root_api_router.include_router(work_experience.router, tags=["work_experience"])

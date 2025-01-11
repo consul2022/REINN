@@ -1,9 +1,11 @@
 import enum
 
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Date, Enum
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from ..database import Base
+from ..views.work_experience import WorkExperienceRequest
 
 
 class PositionName(enum.Enum):
@@ -21,7 +23,7 @@ class PositionName(enum.Enum):
 class WorkExperience(Base):
     __tablename__ = "work_experience"
     id = Column(Integer, primary_key=True, index=True)
-    start_data = Column(Date, nullable=True, unique=False)
+    start_date = Column(Date, nullable=True, unique=False)
     end_date = Column(Date, nullable=True, unique=False)
     company_name = Column(String, nullable=False, unique=False)
     position = Column(Enum(PositionName), nullable=False, unique=False)
@@ -32,3 +34,19 @@ class WorkExperience(Base):
     resume_id = Column(Integer, ForeignKey("resume.id"), nullable=False, unique=False)
 
     resume = relationship("Resume", back_populates="work_experiences")
+
+    @staticmethod
+    async def add_work_experience(session: AsyncSession, work_experience: WorkExperienceRequest):
+        work_experience = WorkExperience(
+            start_date=work_experience.start_date,
+            end_date=work_experience.end_date,
+            company_name=work_experience.company_name,
+            link=work_experience.link,
+            responsibilities=work_experience.responsibilities,
+            achievements=work_experience.achievements,
+            resume_id=work_experience.resume_id
+        )
+        session.add(work_experience)
+        await session.commit()
+        await session.refresh(work_experience)
+        return work_experience
